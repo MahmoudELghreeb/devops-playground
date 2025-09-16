@@ -4,6 +4,7 @@ echo "=== DevOps Playground File Manager ==="
 echo "1. Create file"
 echo "2. Delete file"
 echo "3. Archive folder"
+echo "3.7. List files"
 echo "4. Exit"
 read -p "Choose option: " option
 
@@ -26,6 +27,10 @@ case $option in
         else
             echo "Folder not found!"
         fi
+        ;;
+    3.7)
+        echo "Listing all files:"
+        ls -la
         ;;
     4)
         echo "Goodbye!"
