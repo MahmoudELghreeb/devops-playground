@@ -44,7 +44,7 @@ pipeline {
             sh 'echo "🚨 FAILURE: Something went wrong in ${PROJECT_NAME}"'
         }
         always {
-            echo "📌 Pipeline finished at $(date)"
+            echo "📌 Pipeline finished at ${new Date()}"
         }
     }
 }
