@@ -7,9 +7,9 @@ pipeline {
 
     environment {
         PROJECT_NAME = 'DevOps Playground'
-        DOCKER_HUB_USERNAME = 'mahmoudelghreeb'  // غيره لـ username بتاعك
-        IMAGE_NAME = '${DOCKER_HUB_USERNAME}/devops-playground'
-        IMAGE_TAG = '${params.DEPLOY_ENV}-${BUILD_NUMBER}'
+        DOCKER_HUB_USERNAME = 'mahmoudelghreeb'
+        IMAGE_NAME = "${DOCKER_HUB_USERNAME}/devops-playground"
+        IMAGE_TAG = "${params.DEPLOY_ENV}-${BUILD_NUMBER}"
     }
 
     stages {
