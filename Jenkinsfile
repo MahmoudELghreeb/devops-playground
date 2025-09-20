@@ -28,10 +28,11 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo "Building Docker image: ${env.IMAGE_NAME}:${env.IMAGE_TAG}"
-		sh "docker build -t ${env.IMAGE_NAME}:${env.IMAGE_TAG} ."
+                sh "docker build -t ${env.IMAGE_NAME}:${env.IMAGE_TAG} ."
                 sh "docker images | grep ${env.IMAGE_NAME}"
             }
         }
+
         stage('Login to Docker Hub') {
             steps {
                 echo "Logging in to Docker Hub..."
