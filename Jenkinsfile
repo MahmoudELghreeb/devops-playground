@@ -22,7 +22,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Testing ${env.PROJECT_NAME}..."
-		sh "echo \"All tests passed for ${env.PROJECT_NAME}!\""
+                sh "echo \"All tests passed for ${env.PROJECT_NAME}!\""
             }
         }
         stage('Build Docker Image') {
@@ -32,7 +32,6 @@ pipeline {
                 sh "docker images | grep ${env.IMAGE_NAME}"
             }
         }
-
         stage('Login to Docker Hub') {
             steps {
                 echo "Logging in to Docker Hub..."
@@ -44,7 +43,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 echo "Pushing Docker image: ${env.IMAGE_NAME}:${env.IMAGE_TAG} to Docker Hub..."
-		sh "docker push ${env.IMAGE_NAME}:${env.IMAGE_TAG}"
+                sh "docker push ${env.IMAGE_NAME}:${env.IMAGE_TAG}"
             }
         }
         stage('Deploy') {
@@ -53,7 +52,7 @@ pipeline {
             }
             steps {
                 echo "🚀 Deploying ${env.PROJECT_NAME} to PRODUCTION..."
-		sh "echo \"🔥 PRODUCTION DEPLOYMENT: Image ${env.IMAGE_NAME}:${env.IMAGE_TAG} deployed to production server\""
+                sh "echo \"🔥 PRODUCTION DEPLOYMENT: Image ${env.IMAGE_NAME}:${env.IMAGE_TAG} deployed to production server\""
             }
         }
     }
@@ -61,11 +60,11 @@ pipeline {
     post {
         success {
             echo "✅ Pipeline completed successfully!"
-	    sh "echo \"🎉 SUCCESS: ${env.PROJECT_NAME} deployed to ${env.DEPLOY_ENV}\""
+            sh "echo \"🎉 SUCCESS: ${env.PROJECT_NAME} deployed to ${env.DEPLOY_ENV}\""
         }
         failure {
             echo "❌ Pipeline failed!"
-	    sh "echo \"🚨 FAILURE: Something went wrong in ${env.PROJECT_NAME}\""
+            sh "echo \"🚨 FAILURE: Something went wrong in ${env.PROJECT_NAME}\""
         }
         always {
             echo "📌 Pipeline finished at ${new Date()}"
